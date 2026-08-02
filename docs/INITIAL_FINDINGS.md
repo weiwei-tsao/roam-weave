@@ -363,7 +363,11 @@ A future-friendly repository may evolve toward:
 ```text
 roam-weave/
 ├── README.md
-├── INITIAL_FINDINGS.md
+├── README.zh-CN.md
+├── docs/
+│   ├── README.md
+│   ├── INITIAL_FINDINGS.md
+│   └── HANDOFF.md
 ├── skills/
 │   └── travel-planner/
 │       ├── SKILL.md
@@ -373,8 +377,7 @@ roam-weave/
 ├── schemas/
 │   ├── traveler-profile.schema.json
 │   └── itinerary.schema.json
-├── examples/
-└── docs/
+└── examples/
 ```
 
 For the initial repository, only the findings and overview are required. The implementation structure should be introduced after the planner’s input/output contract is defined.

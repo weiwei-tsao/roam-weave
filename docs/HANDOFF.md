@@ -9,10 +9,11 @@ RoamWeave is still in product discovery and architecture definition. The immedia
 Start by reading:
 
 1. `README.md`
-2. `INITIAL_FINDINGS.md`
-3. this `HANDOFF.md`
+2. `README.zh-CN.md`, if Chinese context is preferred
+3. `docs/INITIAL_FINDINGS.md`
+4. this `docs/HANDOFF.md`
 
-Treat `INITIAL_FINDINGS.md` as the current product rationale and this file as the implementation handoff.
+Treat `docs/INITIAL_FINDINGS.md` as the current product rationale and this file as the implementation handoff.
 
 ---
 
@@ -366,9 +367,11 @@ This structure is a proposal, not a requirement. Improve it where necessary, but
 ```text
 roam-weave/
 ├── README.md
-├── INITIAL_FINDINGS.md
-├── HANDOFF.md
+├── README.zh-CN.md
 ├── docs/
+│   ├── README.md
+│   ├── INITIAL_FINDINGS.md
+│   ├── HANDOFF.md
 │   ├── product-principles.md
 │   ├── itinerary-data-model.md
 │   └── validation-rules.md
@@ -493,7 +496,7 @@ Make reasoned decisions and document them. Do not block all work waiting for ans
 Run Codex from the repository root and use this prompt:
 
 ```text
-Read README.md, INITIAL_FINDINGS.md, and HANDOFF.md in full.
+Read README.md, README.zh-CN.md, docs/INITIAL_FINDINGS.md, and docs/HANDOFF.md in full.
 
 Continue RoamWeave from the product-discovery stage into the first design-and-contract milestone for the travel-planner skill.
 
@@ -506,7 +509,7 @@ Your task is to create a coherent initial repository implementation that include
 - a documented validation checklist
 - at least two realistic fixtures
 
-Follow the MVP boundaries in HANDOFF.md. Do not add booking integrations, browser automation, external APIs, a web framework, or speculative production infrastructure.
+Follow the MVP boundaries in docs/HANDOFF.md. Do not add booking integrations, browser automation, external APIs, a web framework, or speculative production infrastructure.
 
 Before editing, inspect the current repository and propose a concise file plan. Then implement the files, review them for contradictions and unnecessary duplication, and summarize the major design decisions and remaining open questions.
 ```
@@ -514,7 +517,7 @@ Before editing, inspect the current repository and propose a concise file plan. 
 A shorter follow-up prompt for later sessions:
 
 ```text
-Read HANDOFF.md and inspect the current repository state. Continue the next incomplete RoamWeave travel-planner milestone without expanding into booking or external integrations. Preserve the structured-data-first, human-in-the-loop architecture.
+Read docs/HANDOFF.md and inspect the current repository state. Continue the next incomplete RoamWeave travel-planner milestone without expanding into booking or external integrations. Preserve the structured-data-first, human-in-the-loop architecture.
 ```
 
 ---
@@ -526,8 +529,11 @@ At handoff time, the repository contains product-discovery documents only:
 ```text
 roam-weave/
 ├── README.md
-├── INITIAL_FINDINGS.md
-└── HANDOFF.md
+├── README.zh-CN.md
+└── docs/
+    ├── README.md
+    ├── INITIAL_FINDINGS.md
+    └── HANDOFF.md
 ```
 
 No implementation choices should be treated as irreversible yet. The next work should turn the current product conclusions into a clear, testable skill contract.
