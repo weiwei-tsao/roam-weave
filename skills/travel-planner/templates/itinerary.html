@@ -1,0 +1,99 @@
+<!--
+Template for the single-file HTML render of a Trip Itinerary
+(docs/itinerary-data-model.md §3). Same data as templates/itinerary.md,
+same {{double-brace}} / <!-- comment --> conventions — render this only
+when the user asks for an HTML/shareable version (SKILL.md "Output").
+No external CSS/JS/fonts/CDN links: this file must stay self-contained
+and openable offline. No maps, no interactivity — that's out of scope
+this milestone (docs/HANDOFF.md §6.4).
+-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>{{trip title}} — {{destination}}</title>
+<style>
+  :root { color-scheme: light dark; }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    max-width: 640px;
+    margin: 0 auto;
+    padding: 1.5rem 1rem 3rem;
+    line-height: 1.5;
+  }
+  h1 { font-size: 1.4rem; margin-bottom: 0.25rem; }
+  .meta { color: #666; margin-bottom: 1.5rem; }
+  .day { border-top: 1px solid #ddd; padding-top: 1rem; margin-top: 1.5rem; }
+  .day h2 { font-size: 1.1rem; margin-bottom: 0.25rem; }
+  .day-meta { font-size: 0.9rem; color: #666; margin-bottom: 0.75rem; }
+  table { width: 100%; border-collapse: collapse; font-size: 0.95rem; }
+  th, td { text-align: left; padding: 0.35rem 0.5rem; vertical-align: top; }
+  tr:not(:last-child) td { border-bottom: 1px solid #eee; }
+  .assumptions, .open-questions { background: rgba(255, 200, 0, 0.12); padding: 0.75rem 1rem; border-radius: 6px; margin-bottom: 1.5rem; }
+  .included-excluded td:first-child { text-align: center; }
+  footer { margin-top: 2rem; font-size: 0.85rem; color: #888; }
+  @media (prefers-color-scheme: dark) {
+    .meta, .day-meta { color: #aaa; }
+    tr:not(:last-child) td { border-bottom-color: #333; }
+    .day { border-top-color: #333; }
+    footer { color: #777; }
+  }
+</style>
+</head>
+<body>
+
+<h1>{{trip title}} — {{destination}}</h1>
+<p class="meta">{{dates or "Day 1–N" if dates unknown}} · {{travelers.count}} traveler(s) · {{pace}} pace</p>
+
+<!-- if assumptions is non-empty -->
+<div class="assumptions">
+  <strong>Assumptions</strong>
+  <ul>
+    <!-- one <li> per Assumption: "{{description}} — {{reason}}" -->
+  </ul>
+</div>
+
+<!-- repeat once per Day, in day_number order -->
+<section class="day">
+  <h2>Day {{day_number}} — {{area}}<!-- append " ({{date}})" if date is set --></h2>
+  <p>{{design_note}}</p>
+  <p class="day-meta">Estimated walk: {{estimated_walk_km}} km · Intensity: {{intensity}}</p>
+  <table>
+    <thead><tr><th>Time</th><th>Stop</th><th>Notes</th></tr></thead>
+    <tbody>
+      <!-- one <tr> per Stop -->
+      <tr>
+        <td>{{arrival}}–{{departure}}</td>
+        <td>{{name}}（{{local_name}}）</td>
+        <td>{{reservation_status}}<!-- append " — book: {{reservation_url}}" if required --><!-- append " — last entry {{last_entry}}" if last stop and set --></td>
+      </tr>
+    </tbody>
+  </table>
+  <p><strong>Getting there:</strong> <!-- one clause per TransitLeg: "{{from}} → {{to}} ({{mode}}, ~{{estimated_duration_minutes}} min)", joined with " · " --></p>
+  <!-- omit if meal_options is empty -->
+  <p><strong>Nearby meal options:</strong> <!-- one clause per MealOption: "{{name or area}} — {{note}}", joined with " · " --></p>
+  <!-- render Day.notes as a <ul> if non-empty -->
+</section>
+<!-- end repeated Day section -->
+
+<h2>Included / Excluded</h2>
+<table class="included-excluded">
+  <thead><tr><th></th><th>Place</th><th>Reason</th></tr></thead>
+  <tbody>
+    <!-- one <tr> per CandidateStatus, must_see tier first: <td>✅ or ❌</td><td>{{candidate name}}</td><td>{{reason}}</td> -->
+  </tbody>
+</table>
+
+<!-- if any validation_issues are unresolved -->
+<div class="open-questions">
+  <strong>Open Questions</strong>
+  <ul>
+    <!-- one <li> per unresolved ValidationIssue: "{{description}} ({{location}})" -->
+  </ul>
+</div>
+
+<footer>Generated from the Destination Brief for {{destination}}. Anything marked as an assumption above was not stated by the traveler — confirm or correct it before relying on this plan.</footer>
+
+</body>
+</html>
