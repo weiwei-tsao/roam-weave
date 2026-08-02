@@ -1,0 +1,168 @@
+{
+  "destination": "Edinburgh",
+  "dates": { "start": "2026-09-14", "end": "2026-09-16" },
+  "duration_days": null,
+  "origin": "Manchester",
+  "arrival": { "mode": "train", "time": "10:30", "notes": ["Arrive Edinburgh Waverley"] },
+  "departure": { "mode": "train", "time": "16:00", "notes": ["Depart Edinburgh Waverley"] },
+  "accommodation": { "name": "Old Town family hotel", "area": "Old Town", "confirmed": true },
+  "travelers": { "count": 3, "notes": ["2 adults, 1 child (age 6)"] },
+  "pace": "relaxed",
+  "walking_tolerance": "short bursts with frequent breaks — traveling with a 6-year-old",
+  "budget_range": "mid-range",
+  "interests": ["history", "architecture"],
+  "days": [
+    {
+      "date": "2026-09-14",
+      "day_number": 1,
+      "area": "Old Town",
+      "design_note": "Everything today sits within Old Town, a short walk from the hotel — deliberately chosen to minimize backtracking per the accommodation constraint. Castle first while queues are shorter, a relaxed walk down the Royal Mile, and Camera Obscura in the afternoon as a lighter, interactive stop that works well for a 6-year-old.",
+      "estimated_walk_km": 2.1,
+      "intensity": "light",
+      "stops": [
+        {
+          "candidate_id": "edinburgh-castle",
+          "name": "Edinburgh Castle",
+          "local_name": "Edinburgh Castle",
+          "arrival": "09:30",
+          "departure": "11:30",
+          "reservation_status": "required",
+          "reservation_url": "https://example.com/edinburgh-castle-tickets",
+          "last_entry": null,
+          "source": { "url": "https://example.com/edinburgh-castle-hours", "checked_at": "2026-08-01", "confidence": "verified" },
+          "notes": ["Timed-entry ticket booked for 09:30."]
+        },
+        {
+          "candidate_id": "royal-mile",
+          "name": "Royal Mile",
+          "local_name": "Royal Mile",
+          "arrival": "11:45",
+          "departure": "13:00",
+          "reservation_status": "not_needed",
+          "reservation_url": null,
+          "last_entry": null,
+          "source": { "url": "https://example.com/royal-mile", "checked_at": "2026-08-01", "confidence": "verified" },
+          "notes": ["Casual walk-through, street performers and shops."]
+        },
+        {
+          "candidate_id": "camera-obscura",
+          "name": "Camera Obscura & World of Illusions",
+          "local_name": "Camera Obscura",
+          "arrival": "14:00",
+          "departure": "15:30",
+          "reservation_status": "recommended",
+          "reservation_url": "https://example.com/camera-obscura-tickets",
+          "last_entry": "18:00",
+          "source": { "url": "https://example.com/camera-obscura", "checked_at": "2026-05-02", "confidence": "uncertain" },
+          "notes": ["Interactive and family-friendly — good fit for a 6-year-old's attention span."]
+        }
+      ],
+      "transit_legs": [
+        { "from": "Hotel", "to": "Edinburgh Castle", "mode": "walk", "estimated_duration_minutes": 10, "notes": [] },
+        { "from": "Edinburgh Castle", "to": "Royal Mile", "mode": "walk", "estimated_duration_minutes": 2, "notes": [] },
+        { "from": "Royal Mile", "to": "lunch stop", "mode": "walk", "estimated_duration_minutes": 5, "notes": [] },
+        { "from": "lunch stop", "to": "Camera Obscura", "mode": "walk", "estimated_duration_minutes": 5, "notes": [] },
+        { "from": "Camera Obscura", "to": "Hotel", "mode": "walk", "estimated_duration_minutes": 8, "notes": [] }
+      ],
+      "meal_options": [
+        { "name": null, "area": "Royal Mile", "note": "Many casual family-friendly cafes along the Royal Mile — a candidate, not a fixed booking." }
+      ],
+      "notes": []
+    },
+    {
+      "date": "2026-09-15",
+      "day_number": 2,
+      "area": "Holyrood Park / Southside",
+      "design_note": "A lighter day built around Arthur's Seat and the National Museum of Scotland. The summit ascent is skipped in favor of the shorter Dunsapie Loch viewpoint path, given the family's stamina constraint, and the museum's free, unhurried, indoor format works as a natural afternoon wind-down — and a rain backup, per the soft weather constraint.",
+      "estimated_walk_km": 3.0,
+      "intensity": "light",
+      "stops": [
+        {
+          "candidate_id": "arthurs-seat",
+          "name": "Arthur's Seat (Dunsapie Loch viewpoint path)",
+          "local_name": "Arthur's Seat",
+          "arrival": "09:30",
+          "departure": "10:30",
+          "reservation_status": "not_needed",
+          "reservation_url": null,
+          "last_entry": null,
+          "source": { "url": "https://example.com/arthurs-seat", "checked_at": "2026-08-01", "confidence": "verified" },
+          "notes": ["Shortened viewpoint path from Dunsapie Loch, not the full summit ascent — the summit path has loose gravel and no barriers, not recommended for young children."]
+        },
+        {
+          "candidate_id": "national-museum-scotland",
+          "name": "National Museum of Scotland",
+          "local_name": "National Museum of Scotland",
+          "arrival": "12:00",
+          "departure": "14:30",
+          "reservation_status": "not_needed",
+          "reservation_url": null,
+          "last_entry": null,
+          "source": { "url": "https://example.com/national-museum-scotland", "checked_at": "2026-08-01", "confidence": "verified" },
+          "notes": ["Free entry. Closes 17:00 — comfortably ahead of our 14:30 departure, no last-admission constraint applies."]
+        }
+      ],
+      "transit_legs": [
+        { "from": "Hotel", "to": "Arthur's Seat (Dunsapie Loch)", "mode": "taxi", "estimated_duration_minutes": 10, "notes": [] },
+        { "from": "Arthur's Seat (Dunsapie Loch)", "to": "lunch stop", "mode": "walk", "estimated_duration_minutes": 15, "notes": [] },
+        { "from": "lunch stop", "to": "National Museum of Scotland", "mode": "bus", "estimated_duration_minutes": 12, "notes": [] },
+        { "from": "National Museum of Scotland", "to": "Hotel", "mode": "walk", "estimated_duration_minutes": 10, "notes": [] }
+      ],
+      "meal_options": [
+        { "name": null, "area": "Holyrood / Southside", "note": "Casual lunch near Holyrood Park before heading to the museum." }
+      ],
+      "notes": []
+    },
+    {
+      "date": "2026-09-16",
+      "day_number": 3,
+      "area": "Inverleith",
+      "design_note": "A short, low-key morning at the Royal Botanic Garden before collecting luggage and heading to Waverley for the 16:00 train — deliberately unscheduled after 11:30 to leave slack for a delay or a tired child, rather than planning right up to departure.",
+      "estimated_walk_km": 1.8,
+      "intensity": "light",
+      "stops": [
+        {
+          "candidate_id": "royal-botanic-garden-edinburgh",
+          "name": "Royal Botanic Garden Edinburgh",
+          "local_name": "Royal Botanic Garden Edinburgh",
+          "arrival": "09:30",
+          "departure": "11:30",
+          "reservation_status": "not_needed",
+          "reservation_url": null,
+          "last_entry": null,
+          "source": { "url": "https://example.com/royal-botanic-garden", "checked_at": "2026-08-01", "confidence": "verified" },
+          "notes": ["Free entry to the outdoor gardens; no last-admission restriction. Timed to leave a comfortable margin before the 16:00 departure, including a stop at the hotel to collect luggage."]
+        }
+      ],
+      "transit_legs": [
+        { "from": "Hotel", "to": "Royal Botanic Garden Edinburgh", "mode": "bus", "estimated_duration_minutes": 15, "notes": [] },
+        { "from": "Royal Botanic Garden Edinburgh", "to": "Hotel", "mode": "bus", "estimated_duration_minutes": 15, "notes": ["Collect luggage"] },
+        { "from": "Hotel", "to": "Edinburgh Waverley station", "mode": "taxi", "estimated_duration_minutes": 10, "notes": [] }
+      ],
+      "meal_options": [
+        { "name": null, "area": "Stockbridge, near the Botanic Garden", "note": "Relaxed cafe options for a final lunch before departure." }
+      ],
+      "notes": []
+    }
+  ],
+  "constraints": [
+    { "description": "Traveling with a 6-year-old — avoid full-day hikes and long unbroken queues", "kind": "hard", "source": "user_stated" },
+    { "description": "Hotel confirmed in Old Town — minimize daily backtracking to it", "kind": "hard", "source": "user_stated" },
+    { "description": "Prefer indoor backup options in case of rain", "kind": "soft", "source": "user_stated" }
+  ],
+  "assumptions": [
+    { "description": "Assumed the mid-range budget applies to attraction tickets, not accommodation", "reason": "Traveler confirmed the hotel is already booked but didn't specify a separate ticket budget", "confirmed": false }
+  ],
+  "validation_issues": [
+    { "rule": "dynamic-fact-source", "severity": "warning", "description": "Camera Obscura opening hours/price sourced from a listing checked 3 months before travel dates — re-verify closer to the trip.", "location": "day 1 / stop 3 (Camera Obscura)", "resolved": false }
+  ],
+  "candidate_status": [
+    { "candidate_id": "edinburgh-castle", "included": true, "reason": "Must-see; scheduled first on Day 1 while queues are shorter." },
+    { "candidate_id": "royal-mile", "included": true, "reason": "Must-see; adjacent to the Castle, natural next stop, no reservation needed." },
+    { "candidate_id": "arthurs-seat", "included": true, "reason": "Must-see; included as the shortened Dunsapie Loch viewpoint walk instead of the summit ascent, per the family-with-child constraint." },
+    { "candidate_id": "national-museum-scotland", "included": true, "reason": "Free, indoor, unhurried — doubles as a rain backup per the soft weather constraint." },
+    { "candidate_id": "royal-botanic-garden-edinburgh", "included": true, "reason": "Low-effort morning activity on the departure day, close to the train's afternoon departure time." },
+    { "candidate_id": "camera-obscura", "included": true, "reason": "Interactive and family-friendly; fits the afternoon slot on Day 1 well for a 6-year-old's attention span." },
+    { "candidate_id": "dean-village", "included": false, "reason": "Excluded — a scenic detour, but adds roughly 40 minutes of walking with limited appeal for a young child; better suited to a trip without a 6-year-old." }
+  ]
+}

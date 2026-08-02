@@ -1,0 +1,101 @@
+{
+  "destination": "Oxford",
+  "dates": null,
+  "duration_days": 1,
+  "origin": "London",
+  "arrival": { "mode": "train", "time": "08:30", "notes": ["Direct service to Oxford railway station"] },
+  "departure": { "mode": "train", "time": "18:00", "notes": [] },
+  "accommodation": null,
+  "travelers": { "count": 2, "notes": [] },
+  "pace": "moderate",
+  "walking_tolerance": null,
+  "budget_range": null,
+  "interests": ["architecture", "history"],
+  "days": [
+    {
+      "date": null,
+      "day_number": 1,
+      "area": "Central Oxford",
+      "design_note": "A compact loop through central Oxford's academic core: an exterior view of the Radcliffe Camera before it gets busy, into the Bodleian's guided tour, then Christ Church's college and cathedral, a lunch break at the Covered Market, and closing at the Ashmolean — Oxford's free, less-crowded afternoon museum option. Kept to four formal stops so the Bodleian's guided-tour slot doesn't compress the rest of the day.",
+      "estimated_walk_km": 4.5,
+      "intensity": "moderate",
+      "stops": [
+        {
+          "candidate_id": "radcliffe-camera",
+          "name": "Radcliffe Camera",
+          "local_name": "Radcliffe Camera",
+          "arrival": "09:00",
+          "departure": "09:20",
+          "reservation_status": "not_needed",
+          "reservation_url": null,
+          "last_entry": null,
+          "source": { "url": "https://example.com/radcliffe-camera", "checked_at": "2026-07-15", "confidence": "verified" },
+          "notes": ["Exterior view only — interior isn't open to the public."]
+        },
+        {
+          "candidate_id": "bodleian-library",
+          "name": "Bodleian Library",
+          "local_name": "Bodleian Library",
+          "arrival": "09:35",
+          "departure": "11:00",
+          "reservation_status": "required",
+          "reservation_url": "https://example.com/bodleian-tours",
+          "last_entry": null,
+          "source": { "url": "https://example.com/bodleian-hours", "checked_at": "2026-07-15", "confidence": "verified" },
+          "notes": ["Booked guided tour slot — arrive 10 minutes early."]
+        },
+        {
+          "candidate_id": "christ-church",
+          "name": "Christ Church",
+          "local_name": "Christ Church",
+          "arrival": "11:15",
+          "departure": "13:00",
+          "reservation_status": "recommended",
+          "reservation_url": "https://example.com/christ-church-tickets",
+          "last_entry": null,
+          "source": { "url": "https://example.com/christ-church-hours", "checked_at": "2026-07-15", "confidence": "verified" },
+          "notes": []
+        },
+        {
+          "candidate_id": "ashmolean-museum",
+          "name": "Ashmolean Museum",
+          "local_name": "Ashmolean Museum",
+          "arrival": "14:15",
+          "departure": "16:00",
+          "reservation_status": "not_needed",
+          "reservation_url": null,
+          "last_entry": "16:30",
+          "source": { "url": "https://example.com/ashmolean-hours", "checked_at": "2026-07-15", "confidence": "verified" },
+          "notes": ["Free entry — no booking needed."]
+        }
+      ],
+      "transit_legs": [
+        { "from": "Oxford railway station", "to": "Radcliffe Camera", "mode": "walk", "estimated_duration_minutes": 15, "notes": [] },
+        { "from": "Radcliffe Camera", "to": "Bodleian Library", "mode": "walk", "estimated_duration_minutes": 3, "notes": [] },
+        { "from": "Bodleian Library", "to": "Christ Church", "mode": "walk", "estimated_duration_minutes": 12, "notes": [] },
+        { "from": "Christ Church", "to": "Covered Market", "mode": "walk", "estimated_duration_minutes": 8, "notes": ["Lunch stop"] },
+        { "from": "Covered Market", "to": "Ashmolean Museum", "mode": "walk", "estimated_duration_minutes": 12, "notes": [] },
+        { "from": "Ashmolean Museum", "to": "Oxford railway station", "mode": "walk", "estimated_duration_minutes": 18, "notes": [] }
+      ],
+      "meal_options": [
+        { "name": "Covered Market food stalls", "area": "Oxford Covered Market", "note": "Casual lunch stop between Christ Church and the Ashmolean — a candidate, not a fixed booking." }
+      ],
+      "notes": []
+    }
+  ],
+  "constraints": [
+    { "description": "Must return to London by 18:00", "kind": "hard", "source": "user_stated" }
+  ],
+  "assumptions": [
+    { "description": "Assumed moderate walking tolerance (~5km for the day)", "reason": "Traveler didn't specify a walking tolerance", "confirmed": false }
+  ],
+  "validation_issues": [],
+  "candidate_status": [
+    { "candidate_id": "bodleian-library", "included": true, "reason": "Must-see; anchors the late-morning slot around its guided-tour time." },
+    { "candidate_id": "christ-church", "included": true, "reason": "Must-see; adjacent to the Bodleian, natural next stop." },
+    { "candidate_id": "radcliffe-camera", "included": true, "reason": "Must-see; quick exterior stop on the way to the Bodleian, best before crowds arrive." },
+    { "candidate_id": "ashmolean-museum", "included": true, "reason": "Free, unhurried afternoon stop that closes out the day without needing a reservation." },
+    { "candidate_id": "oxford-botanic-garden", "included": false, "reason": "Excluded — one day doesn't leave time beyond the four scheduled stops; better suited to a slower-paced or multi-day visit." },
+    { "candidate_id": "covered-market", "included": true, "reason": "Included as the day's lunch stop (see meal_options), not as a formal timed stop." }
+  ]
+}
