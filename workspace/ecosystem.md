@@ -5,28 +5,39 @@ Keep it updated when the layout changes.
 
 ## Repo layout
 
-Single-repo project, solo-owned. No sibling repos yet — the structure
-below is the target module layout described in `docs/HANDOFF.md`
-(current repo only has `docs/` populated; the rest is planned).
+Single-repo project, solo-owned. No sibling repos yet. Milestone 1
+(design-and-contract for `travel-planner`) is built — the structure
+below reflects the actual current layout, not a target.
 
 ```text
 roam-weave/
 ├── README.md
 ├── README.zh-CN.md
-├── docs/                        # product decisions, handoff, findings
+├── docs/                                  # product decisions, handoff, findings
 │   ├── README.md
 │   ├── INITIAL_FINDINGS.md
-│   └── HANDOFF.md
+│   ├── HANDOFF.md
+│   ├── itinerary-data-model.md            # canonical entity definitions
+│   └── superpowers/specs/                 # dated design specs (brainstorming skill output)
 ├── skills/
-│   └── travel-planner/          # the MVP skill: SKILL.md + references
+│   └── travel-planner/                    # the MVP skill
 │       ├── SKILL.md
-│       ├── references/
-│       ├── templates/
-│       └── examples/
-├── schemas/                     # canonical data contracts (JSON Schema)
+│       ├── references/                    # destination-research, route-planning,
+│       │                                  # one-day-trip, multi-day-trip, quality-check
+│       └── templates/                     # destination-brief.md, itinerary.md, itinerary.html
+├── schemas/                               # canonical data contracts (JSON Schema)
+│   ├── itinerary.schema.json
+│   └── traveler-profile.schema.json
 └── tests/
-    └── fixtures/
+    └── fixtures/                          # oxford-one-day/, edinburgh-family-3-day/
 ```
+
+No `destination-brief.schema.json` yet — Destination Briefs stay
+Markdown-only this milestone
+(`docs/itinerary-data-model.md` §1). No `docs/validation-rules.md` —
+the validation checklist lives at
+`skills/travel-planner/references/quality-check.md` instead, as
+documentation, not executable code (design spec §7).
 
 ## Repos and ownership
 
@@ -71,7 +82,7 @@ Single repo, so "ownership" here means "which layer should change":
 
 1. `docs/itinerary-data-model.md` — field semantics
 2. `schemas/*.schema.json` — schema definition
-3. Validation checklist (in skill references or `docs/validation-rules.md`)
+3. `skills/travel-planner/references/quality-check.md` — validation checklist (documentation-only, not executable code — design spec §7)
 
 ### Product-scope questions ("should this exist at all")
 
