@@ -1,0 +1,47 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "urn:roam-weave:schemas:traveler-profile",
+  "title": "Traveler Profile",
+  "description": "Durable travel preferences that persist across trips, per docs/itinerary-data-model.md §6. Schema/template only — real filled-in profiles are never committed to this repo (docs/HANDOFF.md §10, design spec §4). Trip-specific data (dates, companions on this trip, hotel, must-see list) belongs on the Trip entity in itinerary.schema.json, not here. All fields are optional: a profile is built up incrementally, never invented (docs/HANDOFF.md §6.2).",
+  "type": "object",
+  "additionalProperties": false,
+  "properties": {
+    "pace": {
+      "enum": ["relaxed", "moderate", "packed"],
+      "description": "Durable default. A Trip may override this for a specific occasion."
+    },
+    "walking_tolerance": { "type": "string" },
+    "budget_range": { "type": "string" },
+    "interests": {
+      "type": "array",
+      "items": { "$ref": "#/$defs/interest" },
+      "description": "Interest topics with relative weight, not a fixed category list — avoid overfitting one traveler's interests onto all travelers."
+    },
+    "early_start_tolerance": { "$ref": "#/$defs/tolerance" },
+    "hotel_change_tolerance": { "$ref": "#/$defs/tolerance" },
+    "crowd_tolerance": { "$ref": "#/$defs/tolerance" },
+    "queue_tolerance": { "$ref": "#/$defs/tolerance" },
+    "dietary_notes": { "type": "array", "items": { "type": "string" } },
+    "mobility_notes": { "type": "array", "items": { "type": "string" } },
+    "notes": {
+      "type": "array",
+      "items": { "type": "string" },
+      "description": "Freeform durable preferences not covered by a structured field above."
+    }
+  },
+  "$defs": {
+    "interest": {
+      "type": "object",
+      "required": ["topic", "weight"],
+      "additionalProperties": false,
+      "properties": {
+        "topic": { "type": "string" },
+        "weight": { "enum": ["low", "medium", "high"] }
+      }
+    },
+    "tolerance": {
+      "enum": ["avoid", "neutral", "fine"],
+      "description": "How the traveler feels about this trade-off, not a hard yes/no."
+    }
+  }
+}

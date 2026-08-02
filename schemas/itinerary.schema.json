@@ -1,0 +1,173 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "urn:roam-weave:schemas:itinerary",
+  "title": "Trip Itinerary",
+  "description": "Encodes the Trip entity and its nested entities defined in docs/itinerary-data-model.md §3. Does not encode DestinationBrief/Candidate (§2) — those stay Markdown-only this milestone per §1.",
+  "type": "object",
+  "required": ["destination", "travelers", "pace", "interests", "days", "constraints", "assumptions", "validation_issues", "candidate_status"],
+  "additionalProperties": false,
+  "properties": {
+    "destination": { "type": "string" },
+    "dates": {
+      "type": ["object", "null"],
+      "required": ["start", "end"],
+      "additionalProperties": false,
+      "properties": {
+        "start": { "type": "string", "format": "date" },
+        "end": { "type": "string", "format": "date" }
+      }
+    },
+    "duration_days": { "type": ["integer", "null"], "minimum": 1 },
+    "origin": { "type": ["string", "null"] },
+    "arrival": { "$ref": "#/$defs/transitDetail" },
+    "departure": { "$ref": "#/$defs/transitDetail" },
+    "accommodation": {
+      "type": ["object", "null"],
+      "required": ["name", "area", "confirmed"],
+      "additionalProperties": false,
+      "properties": {
+        "name": { "type": "string" },
+        "area": { "type": "string" },
+        "confirmed": { "type": "boolean" }
+      }
+    },
+    "travelers": {
+      "type": "object",
+      "required": ["count", "notes"],
+      "additionalProperties": false,
+      "properties": {
+        "count": { "type": "integer", "minimum": 1 },
+        "notes": { "type": "array", "items": { "type": "string" } }
+      }
+    },
+    "pace": { "enum": ["relaxed", "moderate", "packed"] },
+    "walking_tolerance": { "type": ["string", "null"] },
+    "budget_range": { "type": ["string", "null"] },
+    "interests": { "type": "array", "items": { "type": "string" } },
+    "days": { "type": "array", "items": { "$ref": "#/$defs/day" } },
+    "constraints": { "type": "array", "items": { "$ref": "#/$defs/constraint" } },
+    "assumptions": { "type": "array", "items": { "$ref": "#/$defs/assumption" } },
+    "validation_issues": { "type": "array", "items": { "$ref": "#/$defs/validationIssue" } },
+    "candidate_status": { "type": "array", "items": { "$ref": "#/$defs/candidateStatus" } }
+  },
+  "$defs": {
+    "transitDetail": {
+      "type": ["object", "null"],
+      "required": ["mode"],
+      "additionalProperties": false,
+      "properties": {
+        "mode": { "type": "string" },
+        "time": { "type": ["string", "null"] },
+        "notes": { "type": "array", "items": { "type": "string" } }
+      }
+    },
+    "day": {
+      "type": "object",
+      "required": ["day_number", "area", "design_note", "intensity", "stops", "transit_legs", "meal_options", "notes"],
+      "additionalProperties": false,
+      "properties": {
+        "date": { "type": ["string", "null"], "format": "date" },
+        "day_number": { "type": "integer", "minimum": 1 },
+        "area": { "type": "string" },
+        "design_note": { "type": "string" },
+        "estimated_walk_km": { "type": ["number", "null"], "minimum": 0 },
+        "intensity": { "enum": ["light", "moderate", "high"] },
+        "stops": { "type": "array", "items": { "$ref": "#/$defs/stop" } },
+        "transit_legs": { "type": "array", "items": { "$ref": "#/$defs/transitLeg" } },
+        "meal_options": { "type": "array", "items": { "$ref": "#/$defs/mealOption" } },
+        "notes": { "type": "array", "items": { "type": "string" } }
+      }
+    },
+    "stop": {
+      "type": "object",
+      "required": ["name", "reservation_status", "notes"],
+      "additionalProperties": false,
+      "properties": {
+        "candidate_id": { "type": ["string", "null"] },
+        "name": { "type": "string" },
+        "local_name": { "type": ["string", "null"] },
+        "arrival": { "type": ["string", "null"], "description": "A time window, not a to-the-minute schedule." },
+        "departure": { "type": ["string", "null"] },
+        "reservation_status": { "enum": ["required", "recommended", "not_needed"] },
+        "reservation_url": { "type": ["string", "null"] },
+        "last_entry": { "type": ["string", "null"] },
+        "source": { "$ref": "#/$defs/source" },
+        "notes": { "type": "array", "items": { "type": "string" } }
+      }
+    },
+    "transitLeg": {
+      "type": "object",
+      "required": ["from", "to", "mode", "notes"],
+      "additionalProperties": false,
+      "properties": {
+        "from": { "type": "string" },
+        "to": { "type": "string" },
+        "mode": { "type": "string" },
+        "estimated_duration_minutes": { "type": ["number", "null"], "minimum": 0 },
+        "notes": { "type": "array", "items": { "type": "string" } }
+      }
+    },
+    "mealOption": {
+      "type": "object",
+      "required": ["area", "note"],
+      "additionalProperties": false,
+      "properties": {
+        "name": { "type": ["string", "null"] },
+        "area": { "type": "string" },
+        "note": { "type": "string" }
+      }
+    },
+    "source": {
+      "type": ["object", "null"],
+      "required": ["url", "checked_at", "confidence"],
+      "additionalProperties": false,
+      "properties": {
+        "url": { "type": "string" },
+        "checked_at": { "type": "string", "format": "date" },
+        "confidence": { "enum": ["verified", "uncertain"] }
+      }
+    },
+    "constraint": {
+      "type": "object",
+      "required": ["description", "kind", "source"],
+      "additionalProperties": false,
+      "properties": {
+        "description": { "type": "string" },
+        "kind": { "enum": ["hard", "soft"] },
+        "source": { "enum": ["user_stated", "inferred"] }
+      }
+    },
+    "assumption": {
+      "type": "object",
+      "required": ["description", "reason", "confirmed"],
+      "additionalProperties": false,
+      "properties": {
+        "description": { "type": "string" },
+        "reason": { "type": "string" },
+        "confirmed": { "type": "boolean" }
+      }
+    },
+    "validationIssue": {
+      "type": "object",
+      "required": ["rule", "severity", "description", "location", "resolved"],
+      "additionalProperties": false,
+      "properties": {
+        "rule": { "type": "string" },
+        "severity": { "enum": ["blocker", "warning", "note"] },
+        "description": { "type": "string" },
+        "location": { "type": "string" },
+        "resolved": { "type": "boolean" }
+      }
+    },
+    "candidateStatus": {
+      "type": "object",
+      "required": ["candidate_id", "included", "reason"],
+      "additionalProperties": false,
+      "properties": {
+        "candidate_id": { "type": "string" },
+        "included": { "type": "boolean" },
+        "reason": { "type": "string" }
+      }
+    }
+  }
+}
