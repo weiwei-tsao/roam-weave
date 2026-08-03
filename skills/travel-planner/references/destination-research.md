@@ -45,6 +45,32 @@ of re-running this from scratch.
    (safety, scams, practical warnings) — keep these destination-wide, not
    duplicated per candidate.
 
+## Optional: Xiaohongshu as a supplementary source
+
+If the current environment already has an MCP tool available that can
+search or read Xiaohongshu (小红书/RedNote) content, it may be used as a
+supplementary discovery source alongside step 1 above. This document does
+not name or recommend a specific tool — that decision belongs to whoever
+configured the environment, not to this skill. If no such tool is
+available, skip this entirely: do not suggest installing one, and do not
+attempt to fetch Xiaohongshu content via `WebSearch`/`WebFetch` (its
+anti-bot measures block that in practice).
+
+**What it's for**: subjective, time-sensitive material plain web search
+under-covers — local/lesser-known candidates, food recommendations,
+photography angles, current popularity/trends. This feeds candidate
+discovery and tiering (steps 1–2 above), not dynamic-fact verification.
+
+**What it is not for**: a Xiaohongshu note is never sufficient on its own
+to mark a dynamic fact (`reservation`, `opening_hours`, `last_admission`,
+`estimated_cost`) `confidence: verified` — personal blogger content is
+treated as unverified by default. If it's the only evidence for a dynamic
+fact, record `confidence: uncertain` per the rule above and say so in the
+output.
+
+English-language social platforms are out of scope here — not yet decided,
+tracked as a separate follow-on ticket.
+
 ## Output
 
 Render with `templates/destination-brief.md`. This is Markdown-only this
