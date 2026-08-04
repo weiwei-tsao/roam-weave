@@ -115,13 +115,58 @@ symlink lives there but has no content of its own.
 
 ## Open questions
 
-- Does `travel-planner` actually get discovered in a genuinely fresh
-  session (not just the implementing session)? Open — see `handoff.md`
-  Next steps.
-- Does a natural-language prompt actually activate `travel-planner` once
-  discovered? Open — separate question, not yet tested at all.
+- ~~Does `travel-planner` actually get discovered in a genuinely fresh
+  session?~~ **Resolved 2026-08-03**: yes — a fresh session's own
+  system-reminder listed `travel-planner` in the available-skills catalog
+  without any prior pointer to it.
+- ~~Does a natural-language prompt actually activate `travel-planner` once
+  discovered?~~ **Resolved 2026-08-03**: yes — user tested "Toronto 有什么
+  好玩的 就是周末情况" (no mention of the skill name) in a fresh session;
+  transcript shows an explicit `Skill(travel-planner)` invocation before
+  any research began.
+
+## Task 3 — Xiaohongshu MCP tool silently skipped during live test
+
+### Facts
+
+- In the Toronto live test above, `travel-planner` correctly fired and
+  used `Web Search` for all research, but no Xiaohongshu MCP tool call
+  appeared anywhere in the transcript, even though the user's environment
+  has `mcp__xiaohongshu__*` tools configured (confirmed present in this
+  same chat session's own system-reminder tool listing).
+- Those `mcp__xiaohongshu__*` tools are listed in Claude Code's
+  system-reminder as **deferred**: named but not directly callable until
+  `ToolSearch` is called to load their schema first (confirmed by reading
+  this session's own system-reminder content, not inferred).
+- `skills/travel-planner/references/destination-research.md`'s Xiaohongshu
+  subsection (added under Task 1) tells the agent to use such a tool "if
+  the current environment already has [one] available" but never mentions
+  that Claude Code MCP tools can be in this deferred, not-yet-loaded state
+  — there is no instruction anywhere telling the agent to check for or load
+  a deferred tool.
+
+### Root cause
+
+Not a defect in Task 1's shipped guidance relative to its own design spec
+(§2.3 explicitly forbids naming a specific tool, and the guidance is
+correctly worded as optional/"may"). It's a gap the live test surfaced:
+the guidance assumes tool availability is self-evident to the agent, but
+under Claude Code's deferred-tool mechanism it is not — an agent that
+doesn't already know to call `ToolSearch` has no way to notice a
+configured-but-deferred Xiaohongshu tool, so it silently behaves as if
+none were configured.
+
+### Decision
+
+Add one short paragraph to the same subsection instructing the agent to
+check the deferred-tools listing for a Xiaohongshu-suggestive tool name
+and load it via `ToolSearch` before concluding none is available. Matched
+by name pattern, not a specific project name — stays within §2.3's
+non-goal ("no specific MCP project named"). Diagnosed and approved by the
+user in-conversation; no separate investigation session or spec needed
+(user's explicit call, see `timeline.md`).
 
 ## Next investigation steps
 
-- Run the two-tier live test (discovery, then activation) in a fresh
-  session per `handoff.md` Next steps 1-3.
+- None outstanding. All three open questions (discovery, activation,
+  Xiaohongshu tool usage) are resolved as of 2026-08-03.

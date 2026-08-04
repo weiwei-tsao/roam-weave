@@ -10,6 +10,9 @@ Human-facing events: status updates, acceptance, deployment, status changes.
 | 2026-08-02/03 | Chat session | weiwei cao + Claude | Task 2 brainstormed with 3 rounds of user-requested rigor fixes to the spec, plan, implemented, reviewed clean | `.claude/skills/` discovery symlink |
 | 2026-08-03 | Chat session | weiwei cao | Task 2 committed (`0ca3065`) | |
 | 2026-08-03 | Chat session | weiwei cao | Requested ticket-workflow Finish pass | This file and the other ticket docs backfilled from the actual work done |
+| 2026-08-03 | Chat session | weiwei cao | Ran the fresh-session discovery/activation live test | Discovery + activation both confirmed via a Toronto-trip prompt; no Xiaohongshu MCP tool call observed |
+| 2026-08-03 | Chat session | weiwei cao + Claude | Diagnosed why the Xiaohongshu tool wasn't called (deferred-tool gap); user approved a lightweight fix — append diagnosis to ticket docs, then patch directly, skip separate investigation session | See `investigation.md`/`implementation.md` Task 3 |
+| 2026-08-03 | Chat session | Claude | Task 3 patch applied to `destination-research.md` | Not yet committed — user commits own work per repo convention |
 
 ## Important messages
 
@@ -28,7 +31,8 @@ the plan and implementation.
 
 - Open: 2026-08-02
 - In progress: 2026-08-02 – 2026-08-03
-- Ready for verification: 2026-08-03 (pending fresh-session discovery/activation live test — see `handoff.md`)
+- Ready for verification: 2026-08-03
+- Verified: 2026-08-03 — discovery + activation confirmed live; Task 3 follow-up patch applied for the Xiaohongshu deferred-tool gap the test surfaced
 - Accepted: pending
 - Deployed: n/a — no deploy step for this repo
 - Done: pending merge/PR decision

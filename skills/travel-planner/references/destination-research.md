@@ -56,6 +56,14 @@ available, skip this entirely: do not suggest installing one, and do not
 attempt to fetch Xiaohongshu content via `WebSearch`/`WebFetch` (its
 anti-bot measures block that in practice).
 
+**Checking availability**: in Claude Code, an MCP tool can be listed but
+deferred — visible only by name in a system-reminder, not yet callable.
+Before concluding no such tool is available, check the deferred-tools
+listing for a tool whose name suggests Xiaohongshu access, and load it via
+`ToolSearch` if one is found. A tool that only appears deferred and is
+never searched for is indistinguishable, in practice, from one that was
+never configured.
+
 **What it's for**: subjective, time-sensitive material plain web search
 under-covers — local/lesser-known candidates, food recommendations,
 photography angles, current popularity/trends. This feeds candidate

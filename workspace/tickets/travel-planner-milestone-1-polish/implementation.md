@@ -89,3 +89,34 @@ scaffold) and `main` at `780be52`.
 - Task 2: `rm .claude/skills/travel-planner` and revert the `ecosystem.md`
   diagram line (git revert of `0ca3065`) — removes the symlink cleanly
   since it has no content of its own.
+
+## Task 3 — deferred-tool check for Xiaohongshu sourcing
+
+Small follow-up from the fresh-session live test (see `investigation.md`
+Task 3). Diagnosed and approved in-conversation; no separate spec/plan
+document per user's explicit choice.
+
+### Files changed
+
+| Repo | File | Change |
+|---|---|---|
+| roam-weave | `skills/travel-planner/references/destination-research.md` | +1 paragraph in the existing "Optional: Xiaohongshu as a supplementary source" subsection |
+
+### Actual change made
+
+Added a "**Checking availability**" paragraph after the existing intro
+paragraph: instructs the agent to check Claude Code's deferred-tools
+listing for a Xiaohongshu-suggestive tool name and load it via
+`ToolSearch` before concluding none is available. No specific tool
+project named (stays within the Task 1 design's non-goal).
+
+### Constraints followed
+
+- [x] Minimal diff — one file, one paragraph
+- [x] No unrelated formatting
+- [x] Ownership unchanged (same file/subsection as Task 1)
+
+### Rollback
+
+Remove the "**Checking availability**" paragraph; the rest of the
+subsection is unaffected.
