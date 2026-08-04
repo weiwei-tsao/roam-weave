@@ -13,6 +13,8 @@ Human-facing events: status updates, acceptance, deployment, status changes.
 | 2026-08-03 | Chat session | weiwei cao | Ran the fresh-session discovery/activation live test | Discovery + activation both confirmed via a Toronto-trip prompt; no Xiaohongshu MCP tool call observed |
 | 2026-08-03 | Chat session | weiwei cao + Claude | Diagnosed why the Xiaohongshu tool wasn't called (deferred-tool gap); user approved a lightweight fix — append diagnosis to ticket docs, then patch directly, skip separate investigation session | See `investigation.md`/`implementation.md` Task 3 |
 | 2026-08-03 | Chat session | Claude | Task 3 patch applied to `destination-research.md` | Not yet committed — user commits own work per repo convention |
+| 2026-08-03 | Chat session | weiwei cao | Committed Task 3, opened PR #3, merged into `main` | Squash-merged as `3a13df5 feat: polish travel-planner sourcing and discovery (#3)` |
+| 2026-08-03 | Chat session | Claude | Synced local `main`, deleted `feat/travel-planner-milestone-1-polish` (local + remote) | Post-merge branch cleanup, user-confirmed |
 
 ## Important messages
 
@@ -33,6 +35,6 @@ the plan and implementation.
 - In progress: 2026-08-02 – 2026-08-03
 - Ready for verification: 2026-08-03
 - Verified: 2026-08-03 — discovery + activation confirmed live; Task 3 follow-up patch applied for the Xiaohongshu deferred-tool gap the test surfaced
-- Accepted: pending
+- Accepted: 2026-08-03 — merged via PR #3 (squash-merged as `3a13df5` on `main`)
 - Deployed: n/a — no deploy step for this repo
-- Done: pending merge/PR decision
+- Done: 2026-08-03 — feature branch deleted (local + remote) after merge

@@ -2,12 +2,12 @@
 
 ## Current status
 
-All three tasks are implemented. Tasks 1-2 are committed. Task 3 (a small
-follow-up patch found during the live test) is staged but **not yet
-committed** — the user commits their own work per repo convention. Not yet
-merged/PR'd — the user chose to keep working on this branch rather than
-integrate after Task 1 (`travel-planner-milestone-1-polish:finishing-a-development-branch`
-Option 3).
+**Ticket closed.** All three tasks implemented, committed, and merged into
+`main` via PR #3 (squash-merged as `3a13df5 feat: polish travel-planner
+sourcing and discovery (#3)`). The feature branch
+(`feat/travel-planner-milestone-1-polish`) has been deleted, both locally
+and on the remote, post-merge. Local `main` is fast-forwarded to
+`origin/main`. No open work remains on this ticket.
 
 ## Completed
 
@@ -36,8 +36,8 @@ Option 3).
 - **Task 3 — deferred-tool check for Xiaohongshu sourcing.** Diagnosed
   in-conversation (no separate investigation session — user's explicit
   choice, see `timeline.md`). Root cause and fix recorded in
-  `investigation.md`/`implementation.md` Task 3 sections. **Staged, not
-  committed**: one paragraph added to
+  `investigation.md`/`implementation.md` Task 3 sections. Committed and
+  merged as part of `3a13df5` (PR #3): one paragraph added to
   `skills/travel-planner/references/destination-research.md`'s Xiaohongshu
   subsection.
 
@@ -45,12 +45,9 @@ Option 3).
 
 ```text
 Repo: roam-weave
-Branch: feat/travel-planner-milestone-1-polish
-Git status: 4 files staged, not committed (Task 3 patch + ticket doc
-  updates — destination-research.md, implementation.md, investigation.md,
-  timeline.md), on top of 4 commits ahead of main (e13dc77, 6802334,
-  0ca3065, e867215)
-PR: not opened yet — user chose to keep working on the branch
+Branch: main (feat/travel-planner-milestone-1-polish deleted post-merge, local + remote)
+Git status: clean, main fast-forwarded to origin/main at 3a13df5
+PR: #3, merged (squash) as 3a13df5 feat: polish travel-planner sourcing and discovery (#3)
 ```
 
 ## Important files
@@ -82,22 +79,14 @@ PR: not opened yet — user chose to keep working on the branch
 
 ## Next steps
 
-1. **Commit Task 3.** 4 files are staged
-   (`skills/travel-planner/references/destination-research.md`,
-   `workspace/tickets/travel-planner-milestone-1-polish/{implementation,investigation,timeline}.md`)
-   — user commits their own work per repo convention.
-2. **Merge/PR decision.** All three tasks are now implemented and live-test
-   verified. This ticket has no more known open work items — next action
-   is the user's call on integrating the branch
-   (`superpowers:finishing-a-development-branch`).
-
-Discovery and activation (formerly next steps 1-3 here) are both
-**confirmed** — see "Completed" and "Key findings" above. No further live
-test is needed for those two questions.
+None. Ticket is closed — merged into `main`, branch cleaned up. If new
+work surfaces on `travel-planner` (e.g. the English-platform sourcing
+follow-on noted in "Out of scope" in `context.md`), open a new ticket
+rather than reopening this one.
 
 ## Blockers
 
-- None. Waiting on the user to commit Task 3 and decide merge/PR — not a technical blocker.
+- None. Ticket closed.
 
 ## Do not do
 
