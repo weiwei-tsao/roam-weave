@@ -2,11 +2,28 @@
 
 ## Current status
 
-All 7 Milestone 1 deliverables for the `travel-planner` skill are built,
-schema-validated, cross-checked, and reviewed clean via `/code-review`
-(Spec: 0 findings; Standards: 2 minor, resolved). Ticket-workflow is at
-the end of Phase 3 (Finish) — `pr.md` is filled, this handoff is the last
-step. **Not yet merged to `main`.**
+**Closed — merged to `main` as PR #2** (`780be52 feat: build
+travel-planner MVP Milestone 1 contract (#2)`). All 7 Milestone 1
+deliverables are live on `main`. Also live-tested this ticket's actual
+output post-merge (a real 3-day Hangzhou itinerary, hand-run through the
+skill's rules) — see "Post-merge findings" below. This ticket is done;
+do not reopen it for new work — see `workspace/tickets/_next` note in
+`.handoff/HANDOFF.md` for what comes next.
+
+### Post-merge findings (append — do not edit the above)
+
+- Live end-to-end test (Hangzhou, 3 days, real web-researched facts)
+  confirmed the skill's content works: output validated against
+  `schemas/itinerary.schema.json`, and running `quality-check.md` for
+  real caught 2 genuine gaps (missing explicit `last_entry` on two
+  last-of-day stops), which were fixed in the test output — the
+  checklist demonstrably does its job.
+- **Gap found, not yet fixed**: `skills/travel-planner/` lives at the
+  repo root, not `.claude/skills/travel-planner/` — Claude Code will
+  **not** auto-discover/auto-trigger this skill from a natural-language
+  prompt. It only gets used when explicitly pointed at. This was known
+  to be untested per the design spec, and is now confirmed a real gap,
+  not just a theoretical one. Candidate first task for the next branch.
 
 ## Completed
 
@@ -20,9 +37,9 @@ step. **Not yet merged to `main`.**
 
 ```text
 Repo: roam-weave
-Branch: feat/travel-planner-milestone-1
-Git status: clean (as of this save)
-PR: not yet opened
+Branch: feat/travel-planner-milestone-1 (merged, safe to ignore/delete locally)
+Git status: main is clean, at 780be52
+PR: #2, merged (squash)
 ```
 
 ## Important files
@@ -55,9 +72,10 @@ PR: not yet opened
 
 ## Next steps
 
-1. User decides whether/when to open the PR using `pr.md`'s title/description as-is, and whether to squash-merge into `main` (this repo's established pattern — PR #1 was squash-merged).
-2. After merge: `main` and this branch will need re-syncing (same pattern as after PR #1, see prior `.handoff/HANDOFF.md` — local branch force-deleted post-squash-merge since content was verified identical, not because of a real divergence).
-3. No further Milestone 1 work is planned. Future work (Milestone 2+) should start a new ticket via `./workspace/scripts/new-ticket.sh <slug> "..."`, not reopen this one.
+None for this ticket — closed. Follow-on work (refining/optimizing the
+skill content, fixing the `.claude/skills/` discovery gap) belongs to a
+**new** ticket on a **new** branch — see `.handoff/HANDOFF.md` at the
+repo root for that handoff, not this file.
 
 ## Blockers
 

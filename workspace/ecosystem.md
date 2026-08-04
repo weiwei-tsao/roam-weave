@@ -11,6 +11,9 @@ below reflects the actual current layout, not a target.
 
 ```text
 roam-weave/
+├── .claude/
+│   └── skills/
+│       └── travel-planner/                # symlink → ../../skills/travel-planner/ (Claude Code discovery path only, no content of its own)
 ├── README.md
 ├── README.zh-CN.md
 ├── docs/                                  # product decisions, handoff, findings
@@ -20,7 +23,7 @@ roam-weave/
 │   ├── itinerary-data-model.md            # canonical entity definitions
 │   └── superpowers/specs/                 # dated design specs (brainstorming skill output)
 ├── skills/
-│   └── travel-planner/                    # the MVP skill
+│   └── travel-planner/                    # the MVP skill (canonical source)
 │       ├── SKILL.md
 │       ├── references/                    # destination-research, route-planning,
 │       │                                  # one-day-trip, multi-day-trip, quality-check
