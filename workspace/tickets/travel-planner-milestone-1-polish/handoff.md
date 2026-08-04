@@ -37,7 +37,24 @@ PR:
 
 ## Next steps
 
-1. 
+1. **Manual, next session only** — verify discovery: start a *fresh*
+   Claude Code session in this repo and check whether `travel-planner`
+   appears in that session's available-skills listing (the system-reminder
+   block enumerating skills with descriptions, shown at session start).
+   Cannot be checked in the session that creates the symlink — skill
+   listings are built at session start, before the change exists.
+2. **Manual, next session only, after step 1 passes** — verify activation:
+   in that same fresh session, give a natural-language prompt that should
+   trigger travel-planner without naming it (e.g. "研究一下东京有什么好玩的"
+   / "what's worth seeing in Tokyo"), and confirm the skill actually fired
+   (an explicit invocation visible in the transcript) — not just that the
+   reply reads like a travel plan, since the underlying model can produce
+   a plausible-looking answer without the skill ever being invoked.
+3. If step 1 passes but step 2 doesn't, the next debugging step is
+   `skills/travel-planner/SKILL.md`'s `description` frontmatter (a
+   matching problem), not the symlink — re-verify `git ls-files -s
+   .claude/skills/travel-planner` still shows `120000` first, to rule out
+   symlink regression before looking anywhere else.
 
 ## Blockers
 
