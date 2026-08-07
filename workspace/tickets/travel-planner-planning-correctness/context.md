@@ -82,7 +82,7 @@ shows the checklist mechanism genuinely can't carry the check.
 ## Links
 
 - Ticket:
-- PR:
+- PR: https://github.com/weiwei-tsao/roam-weave/pull/4
 - Staging URL:
 - Production URL:
 - Discussion thread:

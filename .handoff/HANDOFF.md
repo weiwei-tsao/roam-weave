@@ -1,7 +1,7 @@
 # Session Handoff — roam-weave
 
-Active ticket: `travel-planner-planning-correctness` — Phase 3 done,
-waiting on the user's own `git commit`. Full detail:
+Active ticket: `travel-planner-planning-correctness` — committed and PR
+open: https://github.com/weiwei-tsao/roam-weave/pull/4. Full detail:
 `workspace/tickets/travel-planner-planning-correctness/handoff.md`.
 
 Previous ticket `travel-planner-milestone-1-polish` closed and merged —
@@ -9,8 +9,8 @@ see `workspace/tickets/travel-planner-milestone-1-polish/handoff.md`.
 
 ## Status
 
-Repo on `main`, 1 file modified + 1 untracked ticket dir, not yet
-committed:
+Committed on branch `feat/travel-planner-planning-correctness` (commit
+`e4d0461`), pushed, PR #4 open against `main`:
 
 - `skills/travel-planner/references/quality-check.md` — 2 new checklist
   items (landside/airside state consistency; Assumption-vs-timeline
@@ -19,13 +19,17 @@ committed:
 - `workspace/tickets/travel-planner-planning-correctness/` — ticket
   workspace, all phases filled.
 
+Note: user explicitly asked for commit + PR this session ("先提交本地
+然后open PR") — this overrode the usual "user commits themselves" default
+for this one instance; the default still applies unless asked again.
+
 ## Repo state (anchors)
 
-- Branch: `main`.
-- `git status`: `skills/travel-planner/references/quality-check.md`
-  modified (unstaged); `workspace/tickets/travel-planner-planning-correctness/`
-  untracked.
-- No open PR yet — user hasn't committed.
+- `main` was pushed first (2 prior local-only commits synced to origin:
+  `29a1eb8`, `74b973d`), then this ticket's work went on its own branch.
+- Branch: `feat/travel-planner-planning-correctness`, pushed, tracking
+  `origin/feat/travel-planner-planning-correctness`.
+- PR: https://github.com/weiwei-tsao/roam-weave/pull/4 (open, not merged).
 
 ## Decisions carried forward (slow-decay)
 

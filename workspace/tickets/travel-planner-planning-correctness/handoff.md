@@ -2,11 +2,13 @@
 
 ## Current status
 
-Phase 3 done. Both confirmed defects have a checklist fix
-(`quality-check.md`), hand-verified against all 3 fixtures, PR notes
-written. Nothing committed yet — this repo's standing practice is the
-user runs `git commit` themselves; the change is unstaged and ready for
-their review.
+Committed and PR opened: https://github.com/weiwei-tsao/roam-weave/pull/4
+(branch `feat/travel-planner-planning-correctness`, commit `e4d0461`).
+Both confirmed defects have a checklist fix (`quality-check.md`),
+hand-verified against all 3 fixtures. User explicitly asked for commit +
+PR this time (overriding this repo's usual "user commits themselves"
+default for this instance) — main was pushed first (2 prior local-only
+commits synced to origin), then the fix was committed on its own branch.
 
 ## Completed
 
@@ -38,10 +40,9 @@ their review.
 
 ```text
 Repo: roam-weave
-Branch: main
-Git status: 1 file modified (skills/travel-planner/references/quality-check.md,
-  unstaged), 1 new untracked dir (workspace/tickets/travel-planner-planning-correctness/)
-PR: none yet — user hasn't committed
+Branch: feat/travel-planner-planning-correctness (pushed, tracking origin)
+Commit: e4d0461 feat: add timeline/assumption consistency checks to travel-planner
+PR: https://github.com/weiwei-tsao/roam-weave/pull/4 (open, not yet merged)
 ```
 
 ## Important files
@@ -94,8 +95,8 @@ PR: none yet — user hasn't committed
 
 ## Next steps
 
-1. **User reviews and commits** the `quality-check.md` diff — assistant
-   does not run `git commit` in this repo (standing preference).
+1. **User reviews and merges (or requests changes on) PR #4** —
+   https://github.com/weiwei-tsao/roam-weave/pull/4.
 2. If the user wants to pursue the review's remaining, not-yet-verified
    claims (transport topology, vague transit-time blocks, pace-model
    concreteness, family/accessibility structuring — see

@@ -9,6 +9,8 @@ Human-facing events: status updates, acceptance, deployment, status changes.
 | 2026-08-06 | Conversation | weiwei cao | Scope decision | Chose minimal scope: fix Fact 1 + 2 only |
 | 2026-08-07 | Conversation | Claude | Phase 2 gate | quality-check.md +12 lines, hand-verified against all 3 fixtures |
 | 2026-08-07 | Conversation | Claude | Phase 3 | PR notes + handoff written |
+| 2026-08-07 | GitHub | weiwei cao (via Claude) | Committed + pushed | Branch `feat/travel-planner-planning-correctness`, commit `e4d0461` |
+| 2026-08-07 | GitHub | weiwei cao (via Claude) | PR opened | https://github.com/weiwei-tsao/roam-weave/pull/4 |
 
 ## Important messages
 
