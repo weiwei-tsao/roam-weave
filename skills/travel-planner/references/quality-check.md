@@ -16,6 +16,13 @@ surfaced to the user rather than silently shipped.
       a map search (`docs/HANDOFF.md` §10).
 - [ ] No overlapping `arrival`/`departure` times between consecutive
       `stops` within a `Day`.
+- [ ] For any `Day` involving airport/border transit, the traveler's
+      state (landside vs. through security/immigration/airside) is
+      consistent across consecutive `Stop`/`TransitLeg` entries — once a
+      `Stop` marks security/immigration as cleared, no later `Stop` on the
+      same continuous transit re-describes going through it again, unless
+      a distinct, separate checkpoint (e.g. a second country's border) is
+      actually being crossed.
 - [ ] No `Stop` scheduled outside its venue's known `opening_hours`.
 - [ ] The last `Stop` of each `Day` has its `last_entry` checked, if the
       venue has one.
@@ -41,6 +48,11 @@ surfaced to the user rather than silently shipped.
       any `must_see`-tier candidate that was excluded or demoted.
 - [ ] Missing information is recorded as an `Assumption` with a `reason`,
       not silently filled in (`docs/HANDOFF.md` §6.2).
+- [ ] Every `Assumption` whose `description` states a specific time, date,
+      or value the itinerary depends on (e.g. an assumed arrival time) is
+      consistent with what the `Day` timeline it informs actually shows —
+      if the assumption says "arrives before noon" but Day 1's first
+      `Stop` starts at 14:00, fix one or the other before presenting.
 - [ ] Every `Day` has a non-empty `design_note`.
 - [ ] The rendered output matches the structure of
       `templates/destination-brief.md` or `templates/itinerary.md`, as
